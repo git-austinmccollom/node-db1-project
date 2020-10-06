@@ -50,6 +50,18 @@ server.get("/accounts/:id", (req, res) => {
 
 //Update
 
+server.put("/accounts/:id", (req, res) => {
+    dbFunctions.update(req.params.id, req.body)
+    .then((dbRes) => {
+        res.status(200).json(dbRes);
+      })
+      .catch((dbErr) => {
+        res
+          .status(500)
+          .json(dbErr);
+      });
+})
+
 //Delete
 
 module.exports = server;

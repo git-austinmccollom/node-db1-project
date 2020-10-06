@@ -3,7 +3,8 @@ const db = require("./dbConfig.js");
 module.exports = {
   get,
   insert,
-  getById
+  getById,
+  update
 };
 
 //CRUD
@@ -23,5 +24,9 @@ function getById(id) {
 }
 
 //Update
+
+function update(id, changes) {
+  return db("accounts").where({ id }).update(changes);
+}
 
 //Delete
