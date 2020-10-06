@@ -13,7 +13,7 @@ server.use(express.json());
 server.post("/accounts", (req, res) => {
     dbFunctions.insert(req.body)
     .then((dbRes) => {
-        res.status(200).json(dbRes);
+        res.status(201).json(dbRes);
       })
       .catch((dbErr) => {
         res
@@ -63,5 +63,17 @@ server.put("/accounts/:id", (req, res) => {
 })
 
 //Delete
+
+server.delete("/accounts/:id", (req, res) => {
+    dbFunctions.remove(req.params.id)
+    .then((dbRes) => {
+        res.status(200).json(dbRes);
+      })
+      .catch((dbErr) => {
+        res
+          .status(500)
+          .json(dbErr);
+      });
+})
 
 module.exports = server;

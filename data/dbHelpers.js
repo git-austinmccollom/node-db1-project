@@ -4,7 +4,8 @@ module.exports = {
   get,
   insert,
   getById,
-  update
+  update,
+  remove
 };
 
 //CRUD
@@ -30,3 +31,7 @@ function update(id, changes) {
 }
 
 //Delete
+
+function remove(id) {
+    return db("accounts").where({ id }).del()
+}
